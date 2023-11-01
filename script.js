@@ -2,7 +2,11 @@ window.addEventListener('load', ()=>{
     const form= document.querySelector("#task-form");
     const input= document.querySelector("#task-input");
     const list= document.querySelector("#tasks");
+    const deleteAllButton = document.querySelector("#delete-all");
 
+
+
+    
 
     form.addEventListener('submit', (e)=>{
         e.preventDefault();
@@ -69,6 +73,8 @@ window.addEventListener('load', ()=>{
         task_delete_button.addEventListener('click', ()=>{
             if (confirm("Are you sure you want to delete this task?")) {
                 list.removeChild(task_div);
+            toggleDeleteAllButton();
+
                 
 
             }
@@ -81,9 +87,38 @@ window.addEventListener('load', ()=>{
                
         })
 
+        
+
    
         input.value = "";
+                toggleDeleteAllButton();
+
 
 
     });
+
+    deleteAllButton.addEventListener('click', () => {
+                 if (confirm("Are you sure you want to delete all tasks?")) {
+                     while (list.firstChild) {
+                        list.removeChild(list.firstChild);
+                    }
+ 
+             toggleDeleteAllButton();
+                 }
+             
+        });
+
+    
+    function toggleDeleteAllButton() {
+        if (list.children.length >= 2) {
+            deleteAllButton.style.display = 'block';
+        } else {
+            deleteAllButton.style.display = 'none';
+        }
+    }
+
+
+    
+
+
 });

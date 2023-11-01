@@ -52,7 +52,7 @@ input,button{
 #task-input::placeholder{
     color: var(--primarytext);
 }
-#task-submit{
+#task-submit, #delete-all{
     color: var(--primarytext);
     font-size: 1.25rem;
     font-weight: 700;
@@ -61,6 +61,7 @@ input,button{
     border: 1px solid var(--primarytext);
     border-radius: 1rem;
     padding: 1rem;
+    margin-left: 10px;
 }
 #task-delete{
     color: var(--primarytext);
@@ -99,6 +100,8 @@ main{
 
 .task-list{
     padding: 1rem;
+    max-height: 60vh;
+    overflow: auto;
 }
 
 #tasks .task{
